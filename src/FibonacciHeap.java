@@ -22,11 +22,11 @@ public class FibonacciHeap
 
     public static void main(String[] args) {
         FibonacciHeap heap = new FibonacciHeap();
-        HeapNode[] nodesPointers = new HeapNode[3];
         int m = 2;
+        HeapNode[] nodesPointers = new HeapNode[m+1];
         for (int k = m - 1; k >= -1; k--) {
             heap.insert(k);
-            nodesPointers[m-k+1] = heap.head;
+            nodesPointers[k+1] = heap.head;
         }
 
         print(heap, true);
@@ -36,7 +36,7 @@ public class FibonacciHeap
 
         System.out.println("after delete min");
         print(heap, true);
-        for (int j = m; j > 2; j--) {
+        for (int j = m; j >= 2; j--) {
             int i = (int) (Math.log(j)/Math.log(2));
             int index = (int) (m - Math.pow(2,i)+1);
                 heap.decreaseKey(nodesPointers[index], m + 1);
