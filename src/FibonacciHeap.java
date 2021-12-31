@@ -21,38 +21,76 @@ public class FibonacciHeap
     //static FibonacciHeap fibonacciHeap;
 
     public static void main(String[] args) {
-        long start = System.currentTimeMillis();
-//        System.out.println(start);
-        FibonacciHeap heap = new FibonacciHeap();
-        int m = (int) Math.pow(2,25);
-        HeapNode[] nodesPointers = new HeapNode[m+1];
-        for (int k = m - 1; k >= -1; k--) {
-            heap.insert(k);
-            nodesPointers[k+1] = heap.head;
-        }
+//        Question 1
+//        long start = System.currentTimeMillis();
+////        System.out.println(start);
+//        FibonacciHeap heap = new FibonacciHeap();
+//        int m = (int) Math.pow(2,25);
+//        HeapNode[] nodesPointers = new HeapNode[m+1];
+//        for (int k = m - 1; k >= -1; k--) {
+//            heap.insert(k);
+//            nodesPointers[k+1] = heap.head;
+//        }
+////
+////        print(heap, true);
+////        System.out.println("after insert");
 //
-//        print(heap, true);
-//        System.out.println("after insert");
-
-        heap.deleteMin();
-
-//        System.out.println("after delete min");
-//        print(heap, true);
-        for (int j = m; j >= 2; j--) {
-            int i = (int) (Math.log(j)/Math.log(2));
-            int index = (int) (m - Math.pow(2,i)+1);
-                heap.decreaseKey(nodesPointers[index], m + 1);
-
+//        heap.deleteMin();
+//
+////        System.out.println("after delete min");
+////        print(heap, true);
+//        for (int j = (int) (Math.log(m)/Math.log(2)); j >= 1; j--) {
+////            int i = (int) (Math.log(j)/Math.log(2));
+//            int index = (int) (m - Math.pow(2,j)+1);
+//                heap.decreaseKey(nodesPointers[index + 1], m + 1);
+//        }
+//
+////        System.out.println("after delete min");
+////        print(heap, true);
+//        long finish = System.currentTimeMillis();
+//        long timeElapsed = finish - start;
+//        System.out.println("Run-Time = " + timeElapsed);
+//        System.out.println(" Potential = " + heap.potential());
+//        System.out.println(" totalLinks = " + heap.totalLinks());
+//        System.out.println(" totalCuts = " + heap.totalCuts());
+//
+//        Question 2
+////        System.out.println(start);
+        for (int i = 6 ; i <= 14 ; i = i + 2){
+            FibonacciHeap heap = new FibonacciHeap();
+            long start = System.currentTimeMillis();
+            int m = (int) (Math.pow(3,i)-1);
+            for (int k=0; k<=m; k++){
+                heap.insert(k);
+            }
+            for (int j = 1 ; j<= 3*m/4 ; j++){
+                heap.deleteMin();
+            }
+            long finish = System.currentTimeMillis();
+            long timeElapsed = finish - start;
+            System.out.println("i = "+i);
+            System.out.println("Run-Time = " + timeElapsed);
+            System.out.println(" Potential = " + heap.potential());
+            System.out.println(" totalLinks = " + heap.totalLinks());
+            System.out.println(" totalCuts = " + heap.totalCuts());
         }
 
-//        System.out.println("after delete min");
-//        print(heap, true);
-        long finish = System.currentTimeMillis();
-        long timeElapsed = finish - start;
-        System.out.println("Run-Time" + timeElapsed);
-        System.out.println(" Potential =" + heap.potential());
-        System.out.println(" totalLinks =" + heap.totalLinks());
-        System.out.println(" totalCuts =" + heap.totalCuts());
+//        FibonacciHeap heap = new FibonacciHeap();
+//        long start = System.currentTimeMillis();
+//        int m = 1000;
+//        for (int k=m; k>=0; k--){
+//            heap.insert(k);
+//        }
+//        for (int j = 1 ; j<= 3*m/4 ; j++){
+//            heap.deleteMin();
+//        }
+//        long finish = System.currentTimeMillis();
+//        long timeElapsed = finish - start;
+//        System.out.println("m = "+m);
+//        System.out.println("Run-Time = " + timeElapsed);
+//        System.out.println(" Potential = " + heap.potential());
+//        System.out.println(" totalLinks = " + heap.totalLinks());
+//        System.out.println(" totalCuts = " + heap.totalCuts());
 
 
     }
